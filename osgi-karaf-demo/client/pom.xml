@@ -1,0 +1,47 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>ec.javi</groupId>
+    <artifactId>osgi-karaf-demo</artifactId>
+    <version>1.0.0</version>
+  </parent>
+  <artifactId>client</artifactId>
+  <packaging>bundle</packaging>
+  <name>OSGi + Karaf Demo - Client</name>
+
+  <dependencies>
+    <dependency>
+      <groupId>ec.javi</groupId>
+      <artifactId>api</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.osgi</groupId>
+      <artifactId>org.osgi.service.component.annotations</artifactId>
+      <version>${osgi.annotations.version}</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <extensions>true</extensions>
+        <configuration>
+          <Import-Package>
+            org.apache.felix.service.command;resolution:=optional,
+            *
+          </Import-Package>
+          <instructions>
+            <Bundle-Name>osgi-karaf-demo-client</Bundle-Name>
+            <_dsannotations>*</_dsannotations>
+          </instructions>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
